@@ -2,7 +2,7 @@ package com.company.account;
 
 import com.company.strategy.PasswordStrategy;
 
-public class Account {
+public abstract class Account {
     private PasswordStrategy strategy;
 
     public Account(PasswordStrategy strategy) {

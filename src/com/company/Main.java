@@ -1,14 +1,14 @@
 package com.company;
 
 import com.company.account.Account;
-import com.company.strategy.PinPassword;
+import com.company.account.Phone;
 import com.company.strategy.SimplePassword;
 import com.company.strategy.StrongPassword;
 import com.company.strategy.WordPassword;
 
 public class Main {
     public static void main(String[] args) {
-        Account account = new Account(new PinPassword());
+        Account account = new Phone();
         System.out.println("PIN password:    " + account.createPassword());
 
         account.setStrategy(new SimplePassword());
