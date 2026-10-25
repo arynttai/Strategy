@@ -1,23 +1,32 @@
 package com.company;
 
 import com.company.account.Account;
+import com.company.account.Bank;
+import com.company.account.Game;
 import com.company.account.Phone;
-import com.company.strategy.SimplePassword;
+import com.company.account.Wifi;
 import com.company.strategy.StrongPassword;
 import com.company.strategy.WordPassword;
 
 public class Main {
     public static void main(String[] args) {
-        Account account = new Phone();
-        System.out.println("PIN password:    " + account.createPassword());
+        Account phone = new Phone();
+        Account game = new Game();
+        Account bank = new Bank();
+        Account wifi = new Wifi();
 
-        account.setStrategy(new SimplePassword());
-        System.out.println("Simple password: " + account.createPassword());
+        System.out.println("Phone: " + phone.createPassword());
+        System.out.println("Game:  " + game.createPassword());
+        System.out.println("Bank:  " + bank.createPassword());
+        System.out.println("Wifi:  " + wifi.createPassword());
 
-        account.setStrategy(new StrongPassword());
-        System.out.println("Strong password: " + account.createPassword());
+        System.out.println();
+        System.out.println("Changing strategy at runtime:");
 
-        account.setStrategy(new WordPassword());
-        System.out.println("Word password:   " + account.createPassword());
+        wifi.setStrategy(new StrongPassword());
+        System.out.println("Wifi:  " + wifi.createPassword());
+
+        phone.setStrategy(new WordPassword());
+        System.out.println("Phone: " + phone.createPassword());
     }
 }
