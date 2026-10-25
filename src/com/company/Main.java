@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.strategy.PasswordStrategy;
+import com.company.account.Account;
 import com.company.strategy.PinPassword;
 import com.company.strategy.SimplePassword;
 import com.company.strategy.StrongPassword;
@@ -8,14 +8,16 @@ import com.company.strategy.WordPassword;
 
 public class Main {
     public static void main(String[] args) {
-        PasswordStrategy pin = new PinPassword();
-        PasswordStrategy simple = new SimplePassword();
-        PasswordStrategy strong = new StrongPassword();
-        PasswordStrategy word = new WordPassword();
+        Account account = new Account(new PinPassword());
+        System.out.println("PIN password:    " + account.createPassword());
 
-        System.out.println("PIN password:    " + pin.generate());
-        System.out.println("Simple password: " + simple.generate());
-        System.out.println("Strong password: " + strong.generate());
-        System.out.println("Word password:   " + word.generate());
+        account.setStrategy(new SimplePassword());
+        System.out.println("Simple password: " + account.createPassword());
+
+        account.setStrategy(new StrongPassword());
+        System.out.println("Strong password: " + account.createPassword());
+
+        account.setStrategy(new WordPassword());
+        System.out.println("Word password:   " + account.createPassword());
     }
 }
